@@ -1,0 +1,19 @@
+.gallery {
+  display: flex;
+  width: 30%;
+  height: 250px;
+  gap: 2px;
+}
+.gallery > img {
+  width: 15%;
+  height: 250px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border: 2px solid white;
+  border-radius: 5px;
+  transition: all ease 0.6s;
+}
+.gallery > img:hover {
+  width: 100%;
+  scale: 1.1;
+}
