@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #f6f0eb;
+  font-family: poppins;
+  margin: 0;
+}
+
+a {
+  text-decoration-line: none;
+  color: black;
+}
+.header-container {
+  margin: 0 auto;
+  max-width: 1290px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header {
+  background-color: white;
+  padding: 24px;
+}
+.main-div {
+  overflow-x: hidden;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+.logo {
+  width: 50px;
+}
+
+nav {
+  display: flex;
+  /* gap: 60px; */
+}
+nav a {
+  font-weight: 700;
+  font-size: 20px;
+  color: #492118;
+  max-width: 1290px;
+}
+/* first wale anchor tag ko chhod ke baki me 60 px ka gap aa jaega */
+nav a + a {
+  margin-left: 60px;
+}
+img {
+  width: 100%;
+}
+main {
+  padding: 0 24px;
+}
+.image-container {
+  max-width: 1290px;
+  margin: 0 auto;
+}
+/* hero-section */
+.photo-collage {
+  margin-top: 10px;
+}
+.photo-collage p {
+  color: #492118;
+  font-size: 24px;
+  text-align: center;
+}
+.photo-collage h2 {
+  font-weight: 700;
+  font-size: 48px;
+  color: #492118;
+  text-align: center;
+}
+.characters {
+  max-width: 400px;
+  margin: auto;
+  margin-top: 100px;
+}
+.characters p {
+  text-align: center;
+  font-weight: 700;
+  font-size: 48px;
+}
+.go-to-top {
+  text-decoration-line: underline;
+  text-align: center;
+}
+.footer-text {
+  text-align: center;
+  color: grey;
+}
+.close-icon {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  cursor: pointer;
+  display: none;
+}
+.menu-icon-image {
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+@media (max-width: 1200px) {
+  nav a {
+    font-size: 16px;
+  }
+
+  nav a + a {
+    margin-left: 48px;
+  }
+
+  header {
+    padding: 16px 24px;
+  }
+}
+
+@media (max-width: 960px) {
+  nav a {
+    font-size: 12px;
+  }
+  header {
+    padding: 16px 24px;
+  }
+}
+@media (max-width: 768px) {
+  nav {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    flex-direction: column;
+    padding: 24px;
+    right: -200px;
+    top: 20px;
+    /* display: none; */
+    transition: right 0.5s ease-in-out;
+  }
+  .photo-collage {
+    margin-top: 50px;
+  }
+  .photo-collage h2 {
+    font-size: 10px;
+  }
+  .characters {
+    margin-top: 42px;
+  }
+  .characters p {
+    font-size: 14px;
+  }
+  header {
+    background-color: #f6f0eb6e;
+    position: sticky;
+    backdrop-filter: blur(4px);
+    top: 0;
+  }
+  nav a + a {
+    margin: 0;
+    margin-top: 16px;
+  }
+
+  .close-icon,
+  .menu-icon-image {
+    display: block;
+  }
+  .menu-open nav {
+    display: flex;
+    right: 24px;
+  }
+  .menu-open .menu-icon-image {
+    display: none;
+  }
+}
