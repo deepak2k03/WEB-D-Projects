@@ -1,0 +1,78 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+.container {
+  width: 400px;
+  height: 500px;
+  background-color: rgb(33, 31, 31);
+  margin-top: 100px;
+  border-radius: 20px;
+}
+
+.container .image {
+  margin-top: 10px;
+  /* background-color: antiquewhite; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 20%;
+}
+
+.container img {
+  margin-top: 10;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+
+.container .links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  /* background-color: antiquewhite; */
+  width: 100%;
+}
+.container .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  height: 36px;
+  border-radius: 8px;
+  background-color: rgb(91, 74, 74);
+  color: white;
+  font-family: outfit;
+  text-decoration-line: none;
+}
+.container .text {
+  /* background-color: aliceblue; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container .text h6 {
+  color: rgb(221, 255, 0);
+  margin-top: 0px;
+  font-family: outfit;
+  font-weight: 400;
+}
+.container .text h4 {
+  margin-bottom: 8px;
+  color: antiquewhite;
+  font-family: outfit;
+  font-weight: 500;
+}
+.container .link:hover {
+  background-color: chartreuse;
+  color: black;
+}
