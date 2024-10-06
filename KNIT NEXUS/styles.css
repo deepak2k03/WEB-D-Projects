@@ -1,0 +1,143 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+h1,
+h2,
+h3,
+p {
+  transition: color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  color: #2c3e50;
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #7f8c8d;
+  font-size: 18px;
+}
+
+/* Branch Container */
+.branch-container {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping for desktop */
+  justify-content: space-around;
+  gap: 20px; /* Add space between branches */
+  overflow-x: auto; /* Allow horizontal scrolling if needed */
+}
+
+/* Branch Card */
+.branch {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 320px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.branch:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 26px;
+  color: #2980b9;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Year Section */
+.year {
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 20px;
+  color: #34495e;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Semester Links */
+ul {
+  list-style: none;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+ul li a {
+  display: block;
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+ul li a:hover {
+  background-color: #2980b9;
+}
+
+/* Footer Section */
+footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+footer a {
+  color: #3498db;
+  font-weight: 500;
+}
+
+footer a:hover {
+  color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .branch-container {
+    flex-direction: column; /* Stack branches vertically on smaller screens */
+    align-items: center;
+  }
+
+  .branch {
+    width: 100%;
+    max-width: 500px;
+  }
+}
