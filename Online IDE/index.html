@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Online IDE</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="codemirror-5.65.18/lib/codemirror.css">
+    <link rel="stylesheet" href="codemirror-5.65.18/theme/dracula.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #1e1e2f;
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #2b2b3d;
+            border-bottom: 2px solid #61dafb;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #61dafb;
+        }
+
+        .navbar-brand:hover {
+            color: #21a1f1;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .editor-container,
+        .input-output-container {
+            background-color: #282c34;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-select,
+        textarea {
+            background-color: #2e3440;
+            color: #ffffff;
+            border: 1px solid #3b4252;
+            border-radius: 8px;
+        }
+
+        textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: #61dafb;
+            box-shadow: 0 0 4px #61dafb;
+        }
+
+        .btn-primary {
+            background-color: #61dafb;
+            border-color: #21a1f1;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background-color: #21a1f1;
+            border-color: #1c8cd4;
+        }
+
+        .btn-run {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+
+        .output-section {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .input-output-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Modern IDE</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Language Selection and Run Button -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <select class="form-select w-25" id="inlineFormSelectPref">
+                <option selected>Choose Language</option>
+                <option value="Java">Java</option>
+                <option value="CPP">CPP</option>
+                <option value="Python">Python</option>
+            </select>
+            <button type="button" id="run" class="btn btn-primary btn-run"><i class="bi bi-play-fill"></i> Run</button>
+        </div>
+
+        <!-- Code Editor -->
+        <div class="editor-container">
+            <textarea id="editor" class="form-control" rows="15"></textarea>
+        </div>
+
+        <!-- Input and Output Section -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-output-container">
+                    <label for="input" class="form-label">Input</label>
+                    <textarea id="intput" class="form-control" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-output-container">
+                    <label for="output" class="form-label">Output</label>
+                    <textarea id="output" class="form-control" rows="10" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CodeMirror JavaScript -->
+    <script src="codemirror-5.65.18/lib/codemirror.js"></script>
+    <script src="codemirror-5.65.18/mode/clike/clike.js"></script>
+    <script src="codemirror-5.65.18/mode/python/python.js"></script>
+    <script src="codemirror-5.65.18/addon/edit/closebrackets.js"></script>
+    <script>
+        // Initialize CodeMirror
+        var editor = CodeMirror.fromTextArea(document.getElementById("editor"), {
+            mode: "text/x-c++src",
+            theme: "dracula",
+            lineNumbers: true,
+            autoCloseBrackets: true,
+        });
+
+        // Adjust CodeMirror Size
+        editor.setSize("100%", "400px");
+
+        // Handle Language Change
+        var option = document.getElementById("inlineFormSelectPref");
+        option.addEventListener("change", function () {
+            if (option.value == "Java") {
+                editor.setOption("mode", "text/x-java");
+            } else if (option.value == "Python") {
+                editor.setOption("mode", "text/x-python");
+            } else {
+                editor.setOption("mode", "text/x-c++src");
+            }
+        });
+
+        // Handle Run Button
+        document.getElementById("run").addEventListener("click", async function () {
+            var code = {
+                code: editor.getValue(),
+                input: document.getElementById("intput").value,
+                lang: option.value,
+            };
+            var oData = await fetch("http://localhost:8000/compile", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(code),
+            });
+            var d = await oData.json();
+            document.getElementById("output").value = d.output;
+        });
+    </script>
+</body>
+
+</html>
