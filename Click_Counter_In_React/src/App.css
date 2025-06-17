@@ -1,0 +1,36 @@
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  background: yellow;
+  width: 700px;
+  height: 350px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.increase-counter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: 5px solid red;
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+}
+.decrease-counter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: 5px solid red;
+  width: 350px;
+  height: 350px;
+  border-radius: 5px;
+}
+.value{
+  margin-left: 240px;
+  margin-top: 20px;
+}
